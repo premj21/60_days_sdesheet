@@ -1,0 +1,15 @@
+best time to buy and sell stock ; 
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+      int a= 0 ; 
+    int b = INT_MAX; 
+    for(auto it:prices){
+   b = min(b, it);
+    a= max(it-b, a);
+    }
+    return a; 
+    }
+};
