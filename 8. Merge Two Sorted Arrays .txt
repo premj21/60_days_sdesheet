@@ -1,0 +1,56 @@
+gap methdo sort n merge two arrays without extra space; 
+
+
+#include <bits/stdc++.h> 
+vector<int> ninjaAndSortedArrays(vector<int>& arr, vector<int>&b, int n, int m) {
+    vector<int> ans; 
+	int gap = ((n + m) / 2) + ((n + m) % 2);
+    while (gap >= 1)
+    {
+        for (int i = 0; i < n + m - 1; i++)
+        {
+            if (i > n - 1)
+            {
+                int p = abs(i - (n - 1) - 1);
+                if ((p + gap) > m - 1)
+                {
+                    break;
+                }
+                else if (b[p] > b[p + gap])
+                {
+                    swap(b[p], b[p + gap]);
+                }
+            }
+
+            else if (i + gap > n - 1)
+            {
+
+                int p = abs((n - 1) - (i + gap)) - 1;
+                if (p > m - 1)
+                {
+                    break;
+                }
+                else if (arr[i] > b[p])
+                {
+                    swap(arr[i], b[p]);
+                }
+            }
+            else
+            {
+                if (arr[i] > arr[i + gap])
+                {
+                    swap(arr[i], arr[i + gap]);
+                }
+            }
+        }
+
+        if (gap == 1)
+        {
+            
+            for(int i = 0 ;i<n;i++) ans.push_back(arr[i]);
+            for(int i = 0 ;i<m;i++) ans.push_back(b[i]);
+            return ans;
+        }
+        gap = (gap / 2) + (gap % 2);
+    }
+}
