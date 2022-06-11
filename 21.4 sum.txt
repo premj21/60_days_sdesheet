@@ -1,0 +1,26 @@
+4 sum 
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+       set<int>st; 
+      for(auto it : nums ) st.insert(it);
+    int ans = 0;
+        for(auto nums : nums){
+        if(!st.count(nums-1)){
+            int currentct  = 1; 
+            int currentnum = nums;
+            
+            while(st.count(currentnum + 1)){
+                  currentnum +=1; 
+                currentct +=1; 
+            }
+            
+            ans = max(ans, currentct);  
+        } 
+        }
+        
+        return ans;
+        
+    }
+};
